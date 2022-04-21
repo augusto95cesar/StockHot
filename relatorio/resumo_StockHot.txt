@@ -1,0 +1,102 @@
+:____________________________________________________________________________________________________________________________________________________________________
+DIA 20/04/2022
+- instalar node.js com npm 
+	- .exe
+- instalar Apache cordova
+	- npm install -g cordova
+- instalar jdk do oracle versao jdk1.8.0_202
+	- configurar Variavel JAVA_HOME >> C:\Program Files\Java\jdk1.8.0_202
+- instalar android studio 
+	- configurar Variavel ANDROID_SDK_ROOT >> C:\sdkandroid
+- Instalar Gradle
+	- configurar Variavel no PATH >> C:\Gradle\gradle-7.4.2\bin
+
+
+ 
+PS D:\www\TrabalhoFinal> cordova create StockHot
+PS D:\www\TrabalhoFinal\StockHot> cordova platform add android  
+PS D:\www\TrabalhoFinal\StockHot> cordova run android
+	Checking Java JDK and Android SDK versions
+	ANDROID_SDK_ROOT=C:\sdkandroid (recommended setting)
+	ANDROID_HOME=undefined (DEPRECATED)
+	Using Android SDK: C:\sdkandroid
+
+	Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+	You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+	See https://docs.gradle.org/7.4.2/userguide/command_line_interface.html#sec:command_line_warnings
+
+	BUILD SUCCESSFUL in 2s
+	1 actionable task: 1 executed
+	<-------------> 0% WAITING
+	> IDLE
+	Subproject Path: CordovaLib
+	Subproject Path: app
+
+	FAILURE: Build failed with an exception.
+
+	* Where:
+	Script 'D:\www\TrabalhoFinal\StockHot\platforms\android\CordovaLib\cordova.gradle' line: 75
+
+	* What went wrong:
+	A problem occurred evaluating script.
+	> No usable Android build tools found. Highest 30.x installed version is 30.0.2; Recommended version is 30.0.3.
+
+	* Try:
+	Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+	* Get more help at https://help.gradle.org
+
+	Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+	You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+	See https://docs.gradle.org/7.1.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+	BUILD FAILED in 1s
+	Command failed with exit code 1: D:\www\TrabalhoFinal\StockHot\platforms\android\gradlew cdvBuildDebug -b D:\www\TrabalhoFinal\StockHot\platforms\android\build.gradle
+	
+############################################################################################################################################################################
+>> CONFIGUROU SDK TOOL NO ANDROID STUDIO
+
+PS D:\www\TrabalhoFinal\StockHot> cordova run android
+	Checking Java JDK and Android SDK versions
+	ANDROID_SDK_ROOT=C:\sdkandroid (recommended setting)
+	ANDROID_HOME=undefined (DEPRECATED)
+	Using Android SDK: C:\sdkandroid
+	Subproject Path: CordovaLib
+	Subproject Path: app
+	Warning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+	Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+	Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+	Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+	Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+	Warning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+	Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+	Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+	Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+	Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+
+	> Task :CordovaLib:compileDebugJavaWithJavac
+	Note: Some input files use or override a deprecated API.
+	Note: Recompile with -Xlint:deprecation for details.
+
+	Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+	You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+	See https://docs.gradle.org/7.1.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+	BUILD SUCCESSFUL in 2m 40s
+	48 actionable tasks: 48 executed
+	Built the following apk(s): 
+			D:\www\TrabalhoFinal\StockHot\platforms\android\app\build\outputs\apk\debug\app-debug.apk
+	Checking Java JDK and Android SDK versions
+	ANDROID_SDK_ROOT=C:\sdkandroid (recommended setting)
+	ANDROID_HOME=undefined (DEPRECATED)
+	Using Android SDK: C:\sdkandroid
+	Deploying to emulator emulator-5554
+	Using apk: D:\www\TrabalhoFinal\StockHot\platforms\android\app\build\outputs\apk\debug\app-debug.apk
+	Package name: io.cordova.hellocordova
+	INSTALL SUCCESS
+	LAUNCH SUCCESS
