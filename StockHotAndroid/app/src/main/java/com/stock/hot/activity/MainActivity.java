@@ -1,10 +1,14 @@
-package com.stock.hot;
+package com.stock.hot.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.stock.hot.R;
+
 public class MainActivity extends AppCompatActivity {
+
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

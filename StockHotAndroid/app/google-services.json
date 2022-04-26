@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "708083186445",
+    "project_id": "stockhot-a56fd",
+    "storage_bucket": "stockhot-a56fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708083186445:android:7b8c0993c2c09664584e44",
+        "android_client_info": {
+          "package_name": "com.stock.hot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708083186445-r8u8hc15m3recerjrncppc6lqu22dtmk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.stock.hot",
+            "certificate_hash": "8ceec706d631766714dede50c0daa3128de2024e"
+          }
+        },
+        {
+          "client_id": "708083186445-oavko847eoicqan9jhtoq0l2uodpqf06.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5VeM0Fh5swYq3Q6Cad0vN__h-OtYGXKE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708083186445-oavko847eoicqan9jhtoq0l2uodpqf06.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
