@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "StockHot",
+  "short_name": "StockHot",
+  "version": "com.stockhot",
+  "description": "Sample Apache Cordova App",
+  "author": "Augusto Cesar - Dev",
+  "icons": [],
+  "start_url": "index.html"
+}
