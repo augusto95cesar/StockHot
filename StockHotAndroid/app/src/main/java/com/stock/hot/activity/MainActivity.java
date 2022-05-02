@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,15 +29,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CadastroProdutoActivity.class);
 
-                Produto produto = new Produto();
+                //Produto produto = new Produto();
 
                 //Envia Dados
-                intent.putExtra("produtoSerializado", produto);
+                //intent.putExtra("produtoSerializado", produto);
 
                 startActivity(intent);
-
-
-
             }
         });
 
