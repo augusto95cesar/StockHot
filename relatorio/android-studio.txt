@@ -1,0 +1,5 @@
+DESCOBRIR SHA1 => COMAND: "gradle signingreport" NO EXECUTE GRADLE TASK
+
+configurando firebase  
+
+alterar segurança do firebase
