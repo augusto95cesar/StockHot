@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.stock.hot.R;
 import com.stock.hot.model.Produto;
+import com.stock.hot.service.DbaSourceService;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -46,7 +47,7 @@ public class CadastroProdutoActivity extends AppCompatActivity {
             // montar Objeto Produto
             Produto produto = ValidarCadastro();
             reference.getDatabase();
-            reference.child("estoqueProduto")
+            reference.child(DbaSourceService.getInstance().getNoEstoqueProduto())
                      .push()
                      .setValue(produto)
                      .addOnSuccessListener(new OnSuccessListener<Void>() {

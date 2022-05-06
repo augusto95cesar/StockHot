@@ -1,26 +1,37 @@
 package com.stock.hot.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.stock.hot.R;
 import com.stock.hot.adapter.AdapterProdutosList;
 import com.stock.hot.model.Produto;
 import com.stock.hot.model.ProdutoLista;
 import com.stock.hot.resource.RecyclerItemClickListener;
+import com.stock.hot.service.DbaSourceService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +47,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       ConfigurationLayout();
+        // Dados para lista
+        RecuperarLista();
+
+       // ConfigurationLayout();
 
 
         novoProduto = findViewById(R.id.newProdutoId);
@@ -71,11 +85,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void  ConfigRecycleView(){
+
         recyclerViewProduto = findViewById(R.id.recycleId);
 
-        // Dados para lista
-        RecuperarLista();
-        //Configurando Adapter => RecyclerView
+        //Configurando Adapter => RecyclerView => Passar lista de Dados
         AdapterProdutosList adapter = new AdapterProdutosList(listaProduto);
 
         //Configurando RecyclerView LayoutManager
@@ -117,8 +130,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private  void RecuperarLista(){
-        listaProduto.add(new ProdutoLista("Coca Cola","14784", 0.0, 0, "xfdiFwerc" ));
-        listaProduto.add(new ProdutoLista("Guarana","1459821", 0.0, 12, "FFrcdr18pe" ));
-    }
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.getDatabase();
+        DatabaseReference estoqueProdutos  = reference.child(DbaSourceService.getInstance().getNoEstoqueProduto());
+        Query listaProdutos = estoqueProdutos.orderByKey();
 
+        listaProdutos.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listaProduto.clear();
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    ProdutoLista post = postSnapshot.getValue(ProdutoLista.class);
+                    post.setIdentificado(postSnapshot.getKey());
+                    listaProduto.add(post);
+                }
+                //Log.e("GetLista", "" + listaProduto.size());
+                ConfigurationLayout();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 }
