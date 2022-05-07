@@ -7,7 +7,7 @@
     tools:context=".activity.CadastroProdutoActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tituloId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -28,7 +28,7 @@
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tituloId" />
 
     <EditText
         android:id="@+id/valorProduto"
@@ -70,13 +70,12 @@
         app:layout_constraintTop_toBottomOf="@+id/valorProduto" />
 
     <Button
-        android:id="@+id/salvarProduto"
+        android:id="@+id/acaoBtnProduto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:onClick="CadastrarProduto"
         android:text="Cadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

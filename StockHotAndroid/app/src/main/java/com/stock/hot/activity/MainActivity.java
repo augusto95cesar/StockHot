@@ -50,34 +50,14 @@ public class MainActivity extends AppCompatActivity {
         // Dados para lista
         RecuperarLista();
 
-       // ConfigurationLayout();
-
-
         novoProduto = findViewById(R.id.newProdutoId);
         novoProduto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CadastroProdutoActivity.class);
-
-                //Produto produto = new Produto();
-
-                //Envia Dados
-                //intent.putExtra("produtoSerializado", produto);
-
                 startActivity(intent);
             }
         });
-
-        /*
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        reference.getDatabase();
-
-        Produto produto = new Produto();
-        produto.setNome("CocaCola");
-        produto.setQuantidade(11);
-        produto.setValor(7.55);
-        reference.child("estoqueProduto").child("001").setValue(produto);
-        */
     }
 
     private  void  ConfigurationLayout(){
@@ -108,11 +88,15 @@ public class MainActivity extends AppCompatActivity {
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                             ProdutoLista produtoOnClick =   listaProduto.get(position);
-                             Toast.makeText(getApplicationContext(),
-                                     produtoOnClick.getNome(),
-                                         Toast.LENGTH_SHORT).show();
+                                ProdutoLista produtoOnClick =   listaProduto.get(position);
+                                /*Toast.makeText(getApplicationContext(),
+                                produtoOnClick.getNome(),
+                                Toast.LENGTH_SHORT).show();*/
 
+                                Intent intent = new Intent(getApplicationContext(), CadastroProdutoActivity.class);
+                                //Envia Dados
+                                intent.putExtra("produtoSerializado", produtoOnClick);
+                                startActivity(intent);
                             }
 
                             @Override

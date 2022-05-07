@@ -1,6 +1,8 @@
 package com.stock.hot.model;
 
-public class ProdutoLista extends  Produto{
+import java.io.Serializable;
+
+public class ProdutoLista extends  Produto implements Serializable {
     private String identificado;
 
     public ProdutoLista() { }
