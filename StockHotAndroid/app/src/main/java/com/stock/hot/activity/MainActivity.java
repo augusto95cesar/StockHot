@@ -10,11 +10,14 @@ import androidx.recyclerview.widget.SnapHelper;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -41,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
     private Button novoProduto;
     private RecyclerView recyclerViewProduto;
     private List<ProdutoLista> listaProduto = new ArrayList<>();
-
+    private TextView pesquisa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // Dados para lista
-        RecuperarLista();
+        RecuperarLista("");
 
         novoProduto = findViewById(R.id.newProdutoId);
         novoProduto.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +59,30 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CadastroProdutoActivity.class);
                 startActivity(intent);
+            }
+        });
+        TextView titulo = findViewById(R.id.textTituloProduto);
+        pesquisa = findViewById(R.id.pesquisaId);
+        pesquisa.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if(i2 == 3 || i2 == 6 || i2 == 9 || i2 == 12){
+                    RecuperarLista(charSequence.toString());
+                }
+                if(i2 == 0 ){
+                    RecuperarLista("");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
     }
@@ -113,12 +140,18 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
-    private  void RecuperarLista(){
+    private  void RecuperarLista(String pesquisa ) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         reference.getDatabase();
         DatabaseReference estoqueProdutos  = reference.child(DbaSourceService.getInstance().getNoEstoqueProduto());
-        Query listaProdutos = estoqueProdutos.orderByKey();
-
+        Query listaProdutos ;
+        if(pesquisa == "") {
+              listaProdutos = estoqueProdutos.orderByKey();
+        }else{
+              listaProdutos = estoqueProdutos.orderByChild("nome")
+                                             .startAt(pesquisa)
+                                             .endAt(pesquisa + "\uf8ff");
+        }
         listaProdutos.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
