@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StockHot">
         <activity
+            android:name=".activity.AlterarProdutoActivity"
+            android:exported="false"
+            android:label="@string/title_activity_alterar_produto"
+            android:theme="@style/Theme.StockHot.NoActionBar" />
+        <activity
             android:name=".activity.CadastroProdutoActivity"
             android:exported="false" />
         <activity

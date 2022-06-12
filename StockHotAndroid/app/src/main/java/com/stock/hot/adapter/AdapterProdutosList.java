@@ -20,7 +20,11 @@ public class AdapterProdutosList extends RecyclerView.Adapter<AdapterProdutosLis
     public AdapterProdutosList(List<ProdutoLista> list){
         this.listaProduto = list;
     }
+    public AdapterProdutosList( ){}
 
+    public void  setListAdapterProduto(List<ProdutoLista> list){
+        this.listaProduto = list;
+    }
 
     @NonNull
     @Override
