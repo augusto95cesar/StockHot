@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         TextView titulo = findViewById(R.id.textTituloProduto);
         pesquisa = findViewById(R.id.pesquisaId);
         pesquisa.addTextChangedListener(new TextWatcher() {
@@ -71,13 +72,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                if(i2 == 3 || i2 == 6 || i2 == 9 || i2 == 12){
+                RecuperarLista(charSequence.toString());
+                /*
+                *if(i2 == 3 || i2 == 6 || i2 == 9 || i2 == 12){
                     RecuperarLista(charSequence.toString());
                 }
                 if(i2 == 0 ){
                     RecuperarLista("");
                 }
+                 */
             }
 
             @Override
@@ -148,9 +151,9 @@ public class MainActivity extends AppCompatActivity {
         if(pesquisa == "") {
               listaProdutos = estoqueProdutos.orderByKey();
         }else{
-              listaProdutos = estoqueProdutos.orderByChild("nome")
-                                             .startAt(pesquisa)
-                                             .endAt(pesquisa + "\uf8ff");
+            listaProdutos = estoqueProdutos.orderByChild("nome")
+                                             .startAt(pesquisa.toLowerCase())
+                                             .endAt(pesquisa.toLowerCase() + "\uf8ff");
         }
         listaProdutos.addValueEventListener(new ValueEventListener() {
             @Override
@@ -159,6 +162,10 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     ProdutoLista post = postSnapshot.getValue(ProdutoLista.class);
                     post.setIdentificado(postSnapshot.getKey());
+                    //palavra = palavra.substring(0,1).toUpperCase().concat(palavra.substring(1));
+                    String nome = post.getNome().toLowerCase();
+                    nome = nome.substring(0,1).toUpperCase().concat(nome.substring(1));
+                    post.setNome(nome);
                     listaProduto.add(post);
                 }
                 //Log.e("GetLista", "" + listaProduto.size());

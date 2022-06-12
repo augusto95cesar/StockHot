@@ -13,7 +13,7 @@ public class Produto implements Serializable {
     public  Produto (){}
 
     public Produto(String nome, String codeBarra, Double valor, Integer quantidade) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
         this.codeBarra = codeBarra;
         this.valor = valor;
         this.quantidade = quantidade;

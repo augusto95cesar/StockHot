@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
+import java.util.Locale;
 
 public class CadastroProdutoActivity extends AppCompatActivity {
 
@@ -120,7 +121,7 @@ public class CadastroProdutoActivity extends AppCompatActivity {
     public  Produto ValidarCadastro(){
         Produto produto = new Produto();
 
-        produto.setNome(nomeProduto.getText().toString());
+        produto.setNome(nomeProduto.getText().toString().toLowerCase());
 
         if (TextUtils.isEmpty(codeBarra.getText().toString())) {
             produto.setCodeBarra("");
