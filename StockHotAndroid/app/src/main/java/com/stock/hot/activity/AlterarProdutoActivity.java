@@ -43,7 +43,6 @@ public class AlterarProdutoActivity extends AppCompatActivity {
         codeBarra.setText(produtoID.getCodeBarra());
         quantidadeProduto.setText(produtoID.getQuantidade().toString());
         valorProduto.setText(produtoID.getValor().toString());
-        key = produtoID.getIdentificado();
 
         acaoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +108,6 @@ public class AlterarProdutoActivity extends AppCompatActivity {
         quantidadeProduto = findViewById(R.id.AltqtdProduto);
         valorProduto = findViewById(R.id.AltvalorProduto);
         acaoBtn = findViewById(R.id.AltacaoBtnProduto);
-        delBtn = findViewById(R.id.AltdeleteId);
     }
 
     public void DeleteProduto(View view){
